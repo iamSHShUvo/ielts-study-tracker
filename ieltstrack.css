@@ -1,4 +1,4 @@
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* * { box-sizing: border-box; margin: 0; padding: 0; }
 .wrap { padding: 1.5rem 0; font-family: var(--font-sans); }
 h2.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
 
@@ -80,4 +80,269 @@ input, select { width: 100%; }
   .add-btn { background: #7F77DD; }
   .add-btn:hover { background: #534AB7; }
   .tab.active { background: #7F77DD; border-color: #7F77DD; }
+} */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f5f5f7;
+  color: #1a1a1a;
+  padding: 1.5rem;
+}
+
+.wrap { max-width: 960px; margin: 0 auto; }
+
+/* ── Hero ─────────────────────────────────────────── */
+.hero {
+  background: linear-gradient(135deg, #26215C, #3C3489);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.hero-left h1 { font-size: 17px; font-weight: 600; color: #EEEDFE; margin-bottom: 3px; }
+.hero-left p  { font-size: 12px; color: #AFA9EC; }
+.hero-right   { display: flex; gap: 12px; }
+
+.hero-badge {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  text-align: center;
+  min-width: 72px;
+}
+.hero-badge .bval { font-size: 22px; font-weight: 600; color: #EEEDFE; }
+.hero-badge .blbl { font-size: 10px; color: #AFA9EC; margin-top: 1px; }
+.hero-badge.highlight { background: rgba(29,158,117,0.3); border-color: #1D9E75; }
+.hero-badge.highlight .bval { color: #9FE1CB; }
+.hero-badge.countdown  { background: rgba(186,117,23,0.3);  border-color: #BA7517; }
+.hero-badge.countdown .bval  { color: #FAC775; }
+
+/* ── Motivation banner ────────────────────────────── */
+.motivation {
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  font-size: 13px;
+  margin-bottom: 1.25rem;
+}
+.motivation.good  { background: #E1F5EE; color: #085041; border: 1px solid #5DCAA5; }
+.motivation.warn  { background: #FAEEDA; color: #412402; border: 1px solid #EF9F27; }
+.motivation.start { background: #EEEDFE; color: #26215C; border: 1px solid #7F77DD; }
+
+/* ── Skill progress ───────────────────────────────── */
+.progress-arc {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.arc-title { font-size: 14px; font-weight: 600; color: #1a1a1a; margin-bottom: 0.75rem; }
+.arc-title i { font-size: 14px; vertical-align: -2px; margin-right: 5px; color: #534AB7; }
+
+.skill-bars { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+.skill-row { display: flex; flex-direction: column; gap: 4px; }
+.skill-header { display: flex; justify-content: space-between; align-items: center; }
+.skill-name  { font-size: 12px; color: #555; display: flex; align-items: center; gap: 5px; }
+.skill-score { font-size: 12px; font-weight: 600; color: #1a1a1a; }
+.skill-score span { font-size: 11px; font-weight: 400; color: #888; }
+
+.skill-track { height: 8px; background: #eee; border-radius: 4px; overflow: visible; position: relative; }
+.skill-fill  { height: 100%; border-radius: 4px; }
+
+.score-edit-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #eee;
+}
+.score-edit-item { display: flex; flex-direction: column; gap: 3px; }
+.score-edit-item label { font-size: 11px; color: #777; }
+.score-edit-item input { width: 72px; }
+
+/* ── Stats grid ───────────────────────────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 1.25rem;
+}
+.stat-card { background: #f0eff9; border-radius: 10px; padding: 0.8rem 1rem; }
+.stat-lbl  { font-size: 11px; color: #666; margin-bottom: 3px; }
+.stat-val  { font-size: 20px; font-weight: 600; color: #1a1a1a; }
+.stat-sub  { font-size: 11px; color: #888; margin-top: 1px; }
+
+/* ── Panel ────────────────────────────────────────── */
+.panel {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+}
+.panel-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── Log form ─────────────────────────────────────── */
+.log-row {
+  display: grid;
+  grid-template-columns: 130px 1fr 110px 120px auto;
+  gap: 8px;
+  align-items: end;
+}
+.input-group { display: flex; flex-direction: column; gap: 4px; }
+.input-group label { font-size: 11px; color: #666; font-weight: 500; }
+
+input, select {
+  width: 100%;
+  padding: 6px 9px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  font-size: 13px;
+  height: 36px;
+  outline: none;
+  background: #fafafa;
+  transition: border-color 0.2s;
+}
+input:focus, select:focus { border-color: #7F77DD; background: #fff; }
+
+.add-btn {
+  background: #534AB7;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0 14px;
+  height: 36px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+.add-btn:hover { background: #3C3489; }
+
+/* ── Tabs ─────────────────────────────────────────── */
+.tabs { display: flex; gap: 4px; margin-bottom: 1rem; flex-wrap: wrap; }
+.tab {
+  padding: 5px 14px;
+  font-size: 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  color: #666;
+  background: none;
+  transition: all 0.2s;
+}
+.tab:hover { border-color: #7F77DD; color: #534AB7; }
+.tab.active { background: #534AB7; color: #fff; border-color: #534AB7; }
+
+/* ── Chart ────────────────────────────────────────── */
+.chart-wrap { position: relative; width: 100%; height: 200px; }
+#legendBox  { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; font-size: 12px; color: #666; }
+#legendBox span { display: flex; align-items: center; gap: 5px; }
+#legendBox .dot {
+  width: 11px; height: 11px; border-radius: 3px; display: inline-block;
+}
+.legend-line { display: inline-block; width: 18px; height: 2px; border-top: 2px dashed #D85A30; margin-right: 2px; }
+
+/* ── Calendar ─────────────────────────────────────── */
+.cal-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; }
+.cal-day {
+  border-radius: 5px;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  border: 1px solid #ddd;
+  color: #888;
+  cursor: default;
+}
+.cal-day.today-marker { border: 2px solid #534AB7; color: #534AB7; font-weight: 700; }
+
+.cal-legend {
+  display: flex;
+  gap: 14px;
+  margin-top: 10px;
+  font-size: 11px;
+  color: #666;
+}
+.cal-legend span { display: flex; align-items: center; gap: 4px; }
+.cal-legend .dot { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+.dot.green  { background: #1D9E75; }
+.dot.purple { background: #7F77DD; }
+.dot.empty  { background: #eee; border: 1px solid #ccc; }
+.dot.amber  { background: #BA7517; }
+
+/* ── Session log table ────────────────────────────── */
+.log-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.log-table th {
+  text-align: left;
+  color: #888;
+  font-weight: 500;
+  padding: 6px 8px;
+  border-bottom: 1px solid #eee;
+  font-size: 11px;
+}
+.log-table td {
+  padding: 8px 8px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #1a1a1a;
+  vertical-align: middle;
+}
+.log-table tr:last-child td { border-bottom: none; }
+
+.badge {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.del-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #aaa;
+  font-size: 15px;
+  padding: 2px 6px;
+  border-radius: 5px;
+  transition: all 0.2s;
+}
+.del-btn:hover { background: #fde8e8; color: #c0392b; }
+
+.empty-state {
+  text-align: center;
+  color: #aaa;
+  font-size: 13px;
+  padding: 2rem 0;
+}
+.empty-state i { font-size: 36px; display: block; margin-bottom: 8px; opacity: 0.4; }
+
+/* ── Responsive ───────────────────────────────────── */
+@media (max-width: 680px) {
+  body { padding: 1rem; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .skill-bars { grid-template-columns: 1fr; }
+  .log-row { grid-template-columns: 1fr 1fr; }
+  .log-row .add-btn { grid-column: span 2; }
+  .hero { flex-direction: column; align-items: flex-start; }
+  .hero-right { flex-wrap: wrap; }
+  .cal-grid { grid-template-columns: repeat(6, 1fr); }
 }

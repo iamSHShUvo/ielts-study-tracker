@@ -1,110 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IELTS Study Tracker</title>
-    <link rel="stylesheet" href="ieltstrack.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IELTS Study Tracker</title>
+  <link rel="stylesheet" href="ieltstrack.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 </head>
 <body>
- <div class="wrap">
-<h2 class="sr-only">IELTS 30-Day Study Tracker — from band 6.0 to 8.5 target</h2>
+<div class="wrap">
 
-<div class="hero">
-  <div class="hero-left">
-    <h3><i class="ti ti-trophy" aria-hidden="true" style="margin-right:5px; font-size:16px;"></i>IELTS prep — band 6.0 → 8.5</h3>
-    <p id="heroSub">Loading your 30-day battle plan...</p>
-  </div>
-  <div class="hero-right">
-    <div class="hero-badge countdown">
-      <div class="bval" id="daysLeft">30</div>
-      <div class="blbl">days left</div>
+  <div class="hero">
+    <div class="hero-left">
+      <h1>IELTS prep — band 6.0 → 8.5</h1>
+      <p id="heroSub">Loading your 30-day battle plan...</p>
     </div>
-    <div class="hero-badge">
-      <div class="bval">6.0</div>
-      <div class="blbl">current</div>
-    </div>
-    <div class="hero-badge highlight">
-      <div class="bval">8.5</div>
-      <div class="blbl">target</div>
+    <div class="hero-right">
+      <div class="hero-badge countdown">
+        <div class="bval" id="daysLeft">30</div>
+        <div class="blbl">days left</div>
+      </div>
+      <div class="hero-badge">
+        <div class="bval">6.0</div>
+        <div class="blbl">current</div>
+      </div>
+      <div class="hero-badge highlight">
+        <div class="bval">8.5</div>
+        <div class="blbl">target</div>
+      </div>
     </div>
   </div>
-</div>
 
-<div id="motivationBanner"></div>
+  <div id="motivationBanner"></div>
 
-<div class="progress-arc">
-  <div class="arc-title"><i class="ti ti-target" aria-hidden="true" style="font-size:14px; vertical-align:-2px; margin-right:5px; color:#534AB7;"></i>Skill band estimates — update as you practice</div>
-  <div class="skill-bars" id="skillBars"></div>
-  <div class="score-edit-row" id="scoreEdits"></div>
-</div>
-
-<div class="stats-grid">
-  <div class="stat-card"><div class="stat-lbl">Today's study</div><div class="stat-val" id="stToday">0h 0m</div><div class="stat-sub">daily goal: 6h</div></div>
-  <div class="stat-card"><div class="stat-lbl">This week</div><div class="stat-val" id="stWeek">0h</div><div class="stat-sub">target: 42h/wk</div></div>
-  <div class="stat-card"><div class="stat-lbl">Total logged</div><div class="stat-val" id="stTotal">0h</div><div class="stat-sub">of 180h plan</div></div>
-  <div class="stat-card"><div class="stat-lbl">Streak</div><div class="stat-val" id="stStreak">0</div><div class="stat-sub">days in a row</div></div>
-</div>
-
-<div class="panel">
-  <div class="panel-title"><i class="ti ti-plus" aria-hidden="true"></i>Log a session</div>
-  <div class="log-row">
-    <div class="input-group"><label>Date</label><input type="date" id="inDate"></div>
-    <div class="input-group"><label>IELTS skill</label>
-      <select id="inSubject">
-        <option>Listening</option>
-        <option>Reading</option>
-        <option>Writing Task 1</option>
-        <option>Writing Task 2</option>
-        <option>Speaking</option>
-        <option>Vocabulary</option>
-        <option>Grammar</option>
-        <option>Full Mock Test</option>
-      </select>
+  <div class="progress-arc">
+    <div class="arc-title">
+      <i class="ti ti-target"></i> Skill band estimates — update as you practice
     </div>
-    <div class="input-group"><label>Hours (e.g. 1.5)</label><input type="number" id="inHours" min="0.25" max="12" step="0.25" placeholder="1.5"></div>
-    <div class="input-group"><label>Quality</label>
-      <select id="inQuality">
-        <option value="3">Excellent</option>
-        <option value="2" selected>Good</option>
-        <option value="1">Struggled</option>
-      </select>
+    <div class="skill-bars" id="skillBars"></div>
+    <div class="score-edit-row" id="scoreEdits"></div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-lbl">Today's study</div>
+      <div class="stat-val" id="stToday">0h 0m</div>
+      <div class="stat-sub">daily goal: 6h</div>
     </div>
-    <button class="add-btn" onclick="addEntry()"><i class="ti ti-check" aria-hidden="true"></i> Add</button>
+    <div class="stat-card">
+      <div class="stat-lbl">This week</div>
+      <div class="stat-val" id="stWeek">0h</div>
+      <div class="stat-sub">target: 42h/wk</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-lbl">Total logged</div>
+      <div class="stat-val" id="stTotal">0h</div>
+      <div class="stat-sub">of 180h plan</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-lbl">Streak</div>
+      <div class="stat-val" id="stStreak">0</div>
+      <div class="stat-sub">days in a row</div>
+    </div>
   </div>
-</div>
 
-<div class="panel">
-  <div class="panel-title"><i class="ti ti-chart-line" aria-hidden="true"></i>Study analytics</div>
-  <div class="tabs">
-    <button class="tab active" onclick="setTab('daily',this)">Daily hours</button>
-    <button class="tab" onclick="setTab('skill',this)">By skill</button>
-    <button class="tab" onclick="setTab('quality',this)">Session quality</button>
+  <div class="panel">
+    <div class="panel-title"><i class="ti ti-plus"></i> Log a session</div>
+    <div class="log-row">
+      <div class="input-group">
+        <label>Date</label>
+        <input type="date" id="inDate" />
+      </div>
+      <div class="input-group">
+        <label>IELTS skill</label>
+        <select id="inSubject">
+          <option>Listening</option>
+          <option>Reading</option>
+          <option>Writing Task 1</option>
+          <option>Writing Task 2</option>
+          <option>Speaking</option>
+          <option>Vocabulary</option>
+          <option>Grammar</option>
+          <option>Full Mock Test</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>Hours (e.g. 1.5)</label>
+        <input type="number" id="inHours" min="0.25" max="12" step="0.25" placeholder="1.5" />
+      </div>
+      <div class="input-group">
+        <label>Session quality</label>
+        <select id="inQuality">
+          <option value="3">Excellent</option>
+          <option value="2" selected>Good</option>
+          <option value="1">Struggled</option>
+        </select>
+      </div>
+      <button class="add-btn" onclick="addEntry()">
+        <i class="ti ti-check"></i> Add
+      </button>
+    </div>
   </div>
-  <div class="chart-wrap"><canvas id="mainChart" role="img" aria-label="IELTS study time chart"></canvas></div>
-  <div id="legendBox" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:10px;font-size:12px;color:var(--color-text-secondary);"></div>
-</div>
 
-<div class="panel">
-  <div class="panel-title"><i class="ti ti-calendar-month" aria-hidden="true"></i>30-day countdown calendar</div>
-  <div class="cal-grid" id="calGrid"></div>
-  <div style="display:flex;gap:14px;margin-top:10px;font-size:11px;color:var(--color-text-secondary);">
-    <span><span style="display:inline-block;width:10px;height:10px;background:#1D9E75;border-radius:2px;margin-right:4px;vertical-align:-1px;"></span>Goal hit</span>
-    <span><span style="display:inline-block;width:10px;height:10px;background:#7F77DD;border-radius:2px;margin-right:4px;vertical-align:-1px;"></span>Partial</span>
-    <span><span style="display:inline-block;width:10px;height:10px;background:var(--color-background-secondary);border-radius:2px;margin-right:4px;vertical-align:-1px;border:0.5px solid var(--color-border-tertiary);"></span>Not yet / missed</span>
-    <span><span style="display:inline-block;width:10px;height:10px;background:#BA7517;border-radius:2px;margin-right:4px;vertical-align:-1px;"></span>Exam day</span>
+  <div class="panel">
+    <div class="panel-title"><i class="ti ti-chart-line"></i> Study analytics</div>
+    <div class="tabs">
+      <button class="tab active" onclick="setTab('daily', this)">Daily hours</button>
+      <button class="tab" onclick="setTab('skill', this)">By skill</button>
+      <button class="tab" onclick="setTab('quality', this)">Session quality</button>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="mainChart"></canvas>
+    </div>
+    <div id="legendBox"></div>
   </div>
-</div>
 
-<div class="panel">
-  <div class="panel-title"><i class="ti ti-list" aria-hidden="true"></i>Session log</div>
-  <div id="logArea"></div>
-</div>
+  <div class="panel">
+    <div class="panel-title"><i class="ti ti-calendar-month"></i> 30-day countdown calendar</div>
+    <div class="cal-grid" id="calGrid"></div>
+    <div class="cal-legend">
+      <span><span class="dot green"></span>Goal hit</span>
+      <span><span class="dot purple"></span>Partial</span>
+      <span><span class="dot empty"></span>Not yet / missed</span>
+      <span><span class="dot amber"></span>Exam day</span>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title"><i class="ti ti-list"></i> Session log</div>
+    <div id="logArea"></div>
+  </div>
 
 </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script src="ieltstrack.js"></script>
 </body>
 </html>
